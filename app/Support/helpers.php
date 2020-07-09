@@ -87,3 +87,12 @@ function curlCall($url)
 
     return $output;
 }
+
+/**
+ * return the storage dir
+ * @return string
+ */
+function storageDir()
+{
+    return 'storage/';
+}

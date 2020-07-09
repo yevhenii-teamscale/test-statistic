@@ -18,16 +18,19 @@ class StatisticController {
             return view('pages/statistic', ['error' => 'You should upload file']);
         }
 
-        $statistic = new Statistic();
-
-        $fileStatistic = $statistic->uploadFile('statistic_file');
+        $fileStatistic = uploadFile(storageDir(), 'statistic_file');
 
         if (!$fileStatistic['success']) {
             return view('pages/statistic', ['error' => $fileStatistic['error']]);
         }
 
-        $statistic = $statistic->parseRecords($fileStatistic['filename']);
+        $statistic = new Statistic();
 
-        return view('pages/statistic', compact('statistic'));
+        $statisticData = [];
+        if ($statistic->readFile($fileStatistic['filename'])) {
+            $statisticData = $statistic->parseRecords();
+        }
+
+        return view('pages/statistic', ['statistic' => $statisticData]);
     }
 }
