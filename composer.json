@@ -1,0 +1,22 @@
+{
+    "name": "user/test_statistic",
+    "authors": [
+        {
+            "name": "Yevhenii",
+            "email": "zenia9012@gmail.com"
+        }
+    ],
+    "require": {
+        "bramus/router": "^1.4",
+        "league/csv": "^9.5"
+    },
+
+    "autoload": {
+        "files": [
+            "app/Support/helpers.php"
+        ],
+        "psr-4": {
+            "App\\": "app/"
+        }
+    }
+}
